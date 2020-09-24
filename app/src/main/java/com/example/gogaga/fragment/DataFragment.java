@@ -130,7 +130,7 @@ public class DataFragment extends Fragment {
     };
 
     private void displayNoNetworkToast() {
-        Snackbar snackbar = Snackbar.make(constraintLayout, R.string.no_internet_connection, Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(constraintLayout, R.string.no_internet_connection, Snackbar.LENGTH_SHORT);
         snackbar.show();
         toggleImage(View.VISIBLE);
     }
