@@ -4,25 +4,21 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     private List<Post> postList;
-    private Context context;
 
-    public PostAdapter(Context c, List<Post> p) {
-        this.context = c;
+    public PostAdapter(List<Post> p) {
         this.postList = p;
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,11 +29,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Post p = postList.get(position);
-        holder.titleTxtview.setText(p.getTitle());
-        holder.bodyTxtview.setText(p.getBody());
-        holder.idTextview.setText(String.valueOf(p.getId()));
+        holder.titleTextView.setText(p.getTitle());
+        holder.bodyTextView.setText(p.getBody());
+        holder.idTextView.setText(String.valueOf(p.getId()));
     }
-
 
     @Override
     public int getItemCount() {
@@ -49,21 +44,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView titleTxtview;
-        TextView bodyTxtview;
-        TextView idTextview;
+        TextView titleTextView;
+        TextView bodyTextView;
+        TextView idTextView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            titleTxtview = itemView.findViewById(R.id.title_txtview);
-            bodyTxtview = itemView.findViewById(R.id.body_txtview);
-            idTextview = itemView.findViewById(R.id.user_id_text_view);
+            titleTextView = itemView.findViewById(R.id.title_txtview);
+            bodyTextView = itemView.findViewById(R.id.body_txtview);
+            idTextView = itemView.findViewById(R.id.user_id_text_view);
         }
-    }
-
-    public void setData(List<Post> pList) {
-        postList = pList;
-        notifyDataSetChanged();
     }
 
     public void addData(List<Post> pList) {

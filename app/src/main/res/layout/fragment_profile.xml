@@ -48,7 +48,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="22sp"
                         android:textStyle="bold"
-                        android:text="Roshni, "
+                        android:text="@string/name"
                         android:gravity="left"
                         android:layout_gravity="left"
                         android:textColor="@android:color/black"
@@ -62,7 +62,7 @@
                         android:textSize="22sp"
                         android:textStyle="bold"
                         android:textColor="@android:color/black"
-                        android:text="28"
+                        android:text="@string/age"
                         android:padding="8dp"
                         />
                 </LinearLayout>
@@ -98,7 +98,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:textSize="14sp"
-                            android:text="Android Developer at GoGaga"
+                            android:text="@string/work"
                             android:paddingTop="8dp"
                             android:paddingLeft="8dp"
                             />
@@ -125,7 +125,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:textSize="14sp"
-                            android:text="Bangalore, Karnataka"
+                            android:text="@string/address"
                             android:paddingLeft="8dp"
                             />
 
@@ -151,7 +151,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:textSize="14sp"
-                            android:text="2.5 km North East"
+                            android:text="@string/distance"
                             android:paddingLeft="8dp"
                             />
 
@@ -180,7 +180,7 @@
                             android:layout_height="wrap_content"
                             android:textSize="15sp"
                             android:layout_gravity="center"
-                            android:text="5.5\'"
+                            android:text="@string/height"
                             android:layout_marginRight="8dp"
                             />
 
@@ -205,7 +205,7 @@
                             android:layout_height="wrap_content"
                             android:textSize="15sp"
                             android:layout_gravity="center"
-                            android:text="Gemini"
+                            android:text="@string/star"
                             android:layout_marginRight="8dp"
                             />
 
@@ -230,15 +230,9 @@
                             android:layout_height="wrap_content"
                             android:textSize="15sp"
                             android:layout_gravity="center"
-                            android:text="Never"
+                            android:text="@string/drink"
                             android:layout_marginRight="8dp"
                             />
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_margin="8dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/black" />
 
                     </LinearLayout>
                 </LinearLayout>

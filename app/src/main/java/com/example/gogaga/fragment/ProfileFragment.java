@@ -23,6 +23,7 @@ import java.util.List;
 
 public class ProfileFragment extends Fragment {
 
+    private static final Integer SLIDER_TIMER_COUNT = 2000;
     ViewPager2 viewPager2;
     private Handler sliderHandler = new Handler();
 
@@ -63,17 +64,12 @@ public class ProfileFragment extends Fragment {
 
         viewPager2.setPageTransformer(compositePageTransformer);
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            /**
-             * This method will be invoked when a new page becomes selected. Animation is not
-             * necessarily complete.
-             *
-             * @param position Position index of the new selected page.
-             */
+
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 sliderHandler.removeCallbacks(sliderRunnable);
-                sliderHandler.postDelayed(sliderRunnable, 2000);
+                sliderHandler.postDelayed(sliderRunnable, SLIDER_TIMER_COUNT);
             }
         });
         return rootView;
@@ -95,6 +91,6 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        sliderHandler.postDelayed(sliderRunnable, 2000);
+        sliderHandler.postDelayed(sliderRunnable, SLIDER_TIMER_COUNT);
     }
 }
