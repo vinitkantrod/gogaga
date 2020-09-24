@@ -65,4 +65,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         postList = pList;
         notifyDataSetChanged();
     }
+
+    public void addData(List<Post> pList) {
+        postList.addAll(pList);
+        notifyDataSetChanged();
+    }
 }

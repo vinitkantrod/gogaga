@@ -52,4 +52,6 @@ dependencies {
     // Rounded Image View
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
+    // Retrofit Logging interceptor
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
 }
