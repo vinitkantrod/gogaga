@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GoGaga</string>
+    <string name="title_data">Data</string>
+    <string name="title_profile">Profile</string>
+</resources>
