@@ -7,13 +7,18 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.transition.Slide;
+import androidx.transition.Transition;
+import androidx.transition.TransitionManager;
 
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +45,7 @@ public class DataFragment extends Fragment {
 
     ConstraintLayout constraintLayout;
     PostApiInterface postApiInterface;
+    LinearLayout brokenInternetLL;
     RecyclerView recyclerView;
     PostAdapter postAdapter;
     List<Post> postList = new ArrayList<>();
@@ -59,6 +65,7 @@ public class DataFragment extends Fragment {
         postApiInterface = postRetrofit.getPostsInterface();
 
         constraintLayout = rootView.findViewById(R.id.fragment_data);
+        brokenInternetLL = rootView.findViewById(R.id.broken_internet_ll);
 
         progressBar = rootView.findViewById(R.id.progress_bar);
         recyclerView = rootView.findViewById(R.id.data_recycler_view);
@@ -98,6 +105,7 @@ public class DataFragment extends Fragment {
     }
 
     public void fetchData() {
+        toggleImage(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
         progressBarHandler.postDelayed(showProgressRunnable, 5000);
         postApiInterface.getPosts(String.valueOf(START), String.valueOf(LIMIT)).enqueue(callback);
@@ -124,18 +132,27 @@ public class DataFragment extends Fragment {
     private void displayNoNetworkToast() {
         Snackbar snackbar = Snackbar.make(constraintLayout, R.string.no_internet_connection, Snackbar.LENGTH_LONG);
         snackbar.show();
-//        Toast.makeText(getContext(), R.string.no_internet_connection, Toast.LENGTH_LONG).show();
+        toggleImage(View.VISIBLE);
     }
 
+    public void toggleImage(int visibility) {
+        Transition transition = new Slide(Gravity.BOTTOM);
+        transition.setDuration(1000);
+        transition.addTarget(brokenInternetLL);
+
+        TransitionManager.beginDelayedTransition(constraintLayout, transition);
+        brokenInternetLL.setVisibility(visibility);
+    }
     Runnable showProgressRunnable = new Runnable() {
         @Override
         public void run() {
             if (progressBar.getVisibility() == View.VISIBLE) {
                 progressBar.setVisibility(View.GONE);
                 displayNoNetworkToast();
+            } else {
+                toggleImage(View.VISIBLE);
             }
         }
     };
-
 
 }
