@@ -130,8 +130,8 @@ public class DataFragment extends Fragment {
     };
 
     private void displayNoNetworkToast() {
-        Snackbar snackbar = Snackbar.make(constraintLayout, R.string.no_internet_connection, Snackbar.LENGTH_SHORT);
-        snackbar.show();
+//        Snackbar snackbar = Snackbar.make(getActivity().findViewById(R.id.fragment_data), R.string.no_internet_connection, Snackbar.LENGTH_SHORT);
+//        snackbar.show();
         if (currentItem == 0) {
             toggleImage(View.VISIBLE);
         }
